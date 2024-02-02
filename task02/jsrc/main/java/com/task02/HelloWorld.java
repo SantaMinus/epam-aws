@@ -13,17 +13,13 @@ import java.util.Map;
     isPublishVersion = true
 )
 @LambdaUrlConfig
-public class HelloWorld implements RequestHandler<Object, Map<String, Map<String, Object>>> {
+public class HelloWorld implements RequestHandler<Object, Map<String, Object>> {
 
-  public Map<String, Map<String, Object>> handleRequest(Object request, Context context) {
+  public Map<String, Object> handleRequest(Object request, Context context) {
     System.out.println("Hello from lambda");
-
-    Map<String, Object> bodyMap = new HashMap<>();
-    bodyMap.put("statusCode", 200);
-    bodyMap.put("message", "Hello from Lambda");
-
-    Map<String, Map<String, Object>> resultMap = new HashMap<>();
-    resultMap.put("body", bodyMap);
+    Map<String, Object> resultMap = new HashMap<String, Object>();
+    resultMap.put("statusCode", 200);
+    resultMap.put("message", "Hello from Lambda");
     return resultMap;
   }
 }
